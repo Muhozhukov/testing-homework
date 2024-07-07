@@ -11,7 +11,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { CartState, CheckoutResponse, ProductShortInfo } from "../../src/common/types";
 import { Cart } from "../../src/client/pages/Cart";
 
-const cart: CartState = {
+const mockCart: CartState = {
     1: { name: '1', count: 1, price: 10 },
     2: { name: '2', count: 1, price: 20 },
     3: { name: '3', count: 1, price: 30 },
@@ -30,7 +30,7 @@ const faker = new Faker({
 describe('Оформление заказа', () => {
 
     beforeAll(() => {
-        jest.spyOn(CartApi.prototype, 'getState').mockReturnValue(cart);
+        jest.spyOn(CartApi.prototype, 'getState').mockReturnValue(mockCart);
         jest.spyOn(axios, 'post').mockResolvedValue(checkoutResponse);
     })
     afterEach(() => {
@@ -40,8 +40,8 @@ describe('Оформление заказа', () => {
         const basename = '/';
 
         const api = new ExampleApi(basename);
-        const cartt = new CartApi();
-        const store = initStore(api, cartt);
+        const cartApi = new CartApi();
+        const store = initStore(api, cartApi);
     
         const application = (
             <MemoryRouter>
@@ -61,8 +61,8 @@ describe('Оформление заказа', () => {
         const basename = '/';
 
         const api = new ExampleApi(basename);
-        const cartt = new CartApi();
-        const store = initStore(api, cartt);
+        const cartApi = new CartApi();
+        const store = initStore(api, cartApi);
     
         const application = (
             <MemoryRouter>
@@ -97,8 +97,8 @@ describe('Оформление заказа', () => {
         const basename = '/';
 
         const api = new ExampleApi(basename);
-        const cartt = new CartApi();
-        const store = initStore(api, cartt);
+        const cartApi = new CartApi();
+        const store = initStore(api, cartApi);
     
         const application = (
             <MemoryRouter>
@@ -121,8 +121,8 @@ describe('Оформление заказа', () => {
         const basename = '/';
 
         const api = new ExampleApi(basename);
-        const cartt = new CartApi();
-        const store = initStore(api, cartt);
+        const cartApi = new CartApi();
+        const store = initStore(api, cartApi);
     
         const application = (
             <MemoryRouter>
@@ -147,8 +147,8 @@ describe('Оформление заказа', () => {
         const basename = '/';
 
         const api = new ExampleApi(basename);
-        const cartt = new CartApi();
-        const store = initStore(api, cartt);
+        const cartApi = new CartApi();
+        const store = initStore(api, cartApi);
     
         const application = (
             <MemoryRouter>

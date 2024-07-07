@@ -11,7 +11,6 @@ import { MemoryRouter } from 'react-router-dom';
 import { CartState, Product as ProductType, ProductShortInfo } from "../../src/common/types";
 import { Catalog } from "../../src/client/pages/Catalog";
 import { ProductItem } from "../../src/client/components/ProductItem";
-import { Product } from "../../src/client/pages/Product";
 import { ProductDetails } from "../../src/client/components/ProductDetails";
 
 const ReceivedProductCnt = 5;
@@ -26,7 +25,7 @@ const response: {data: ProductShortInfo[]} = {
     })
 }
 
-const cart: CartState = {
+const mockCart: CartState = {
     1: { ...response.data[0], count: 1 },
 }
 
@@ -88,7 +87,7 @@ describe('Каталог', () => {
     })
 
     it('если товар уже добавлен в корзину, в каталоге и на странице товара должно отображаться сообщение об этом', async () => {
-        jest.spyOn(CartApi.prototype, 'getState').mockReturnValue(cart);
+        jest.spyOn(CartApi.prototype, 'getState').mockReturnValue(mockCart);
         
         const basename = '/';
         

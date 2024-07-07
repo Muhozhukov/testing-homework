@@ -23,7 +23,7 @@ const response: {data: ProductShortInfo[]} = {
     })
 }
 
-const cart: CartState = {
+const mockCart: CartState = {
     1: { ...response.data[0], count: 1 },
     2: { ...response.data[1], count: 1 },
 }
@@ -31,13 +31,13 @@ const cart: CartState = {
 describe('Корзина', () => {
     it('в шапке рядом со ссылкой на корзину должно отображаться количество не повторяющихся товаров в ней', async () => {
         jest.spyOn(axios, 'get').mockResolvedValue(response);
-        jest.spyOn(CartApi.prototype, 'getState').mockReturnValue(cart);
+        jest.spyOn(CartApi.prototype, 'getState').mockReturnValue(mockCart);
 
         const basename = '/';
 
         const api = new ExampleApi(basename);
-        const cartt = new CartApi();
-        const store = initStore(api, cartt);
+        const cartApi = new CartApi();
+        const store = initStore(api, cartApi);
     
         const application = (
             <MemoryRouter initialEntries={['/catalog']}>
@@ -62,8 +62,8 @@ describe('Корзина', () => {
         const basename = '/';
 
         const api = new ExampleApi(basename);
-        const cartt = new CartApi();
-        const store = initStore(api, cartt);
+        const cartApi = new CartApi();
+        const store = initStore(api, cartApi);
     
         const application = (
             <MemoryRouter>
@@ -89,8 +89,8 @@ describe('Корзина', () => {
         const basename = '/';
         
         const api = new ExampleApi(basename);
-        const cartt = new CartApi();
-        const store = initStore(api, cartt);
+        const cartApi = new CartApi();
+        const store = initStore(api, cartApi);
     
         const application = (
             <MemoryRouter>
@@ -117,8 +117,8 @@ describe('Корзина', () => {
         const basename = '/';
         
         const api = new ExampleApi(basename);
-        const cartt = new CartApi();
-        const store = initStore(api, cartt);
+        const cartApi = new CartApi();
+        const store = initStore(api, cartApi);
     
         const application = (
             <MemoryRouter>
